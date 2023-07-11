@@ -17,10 +17,10 @@ int main() {
         cin >> word;
 
         if (command == "find") {
-            cout << words.count(word)>0?1:0 << endl;
+            cout << ((words.count(word)>0)?1:0) << endl;
         } else if (command == "insert") {
             pair<set<string>::iterator, bool> result = words.insert(word);
-            cout << result.second?1:0 << endl;
+            cout << (result.second?1:0) << endl;
         }
     }
     return 0;
