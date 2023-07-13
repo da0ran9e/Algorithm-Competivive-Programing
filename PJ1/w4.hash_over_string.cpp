@@ -6,15 +6,13 @@ int main() {
     cin >> n >> m;
     
     for (int i=0; i<n; i++) {
+        int hash = 0;
         string s;
         cin >> s;
-        int hash = 0;
-        int len = s.length();
-        
-        for (int j=0; j<len; j++) {
+
+        for (int j=0; j<s.length(); j++) {
             hash = (hash*256 + s[j])%m;
         }
-        
         cout << hash << endl;
     }
     
