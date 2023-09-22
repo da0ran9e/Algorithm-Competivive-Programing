@@ -38,8 +38,31 @@ void reactivity (char code){
 	}
 }
 
-void protection (char code){
-
+void protection (char code, int coloured){
+	switch (code){
+	case 112:
+	case 80:
+	case 114:
+	case 82:
+	case 119:
+	case 87:
+	case 120: 
+	case 88:
+		printf("Protection:\tfull protective clothing must be worn\n");
+		break;
+	case 115:
+	case 83:
+	case 116:
+	case 84:
+	case 121:
+	case 89:
+	case 122:
+	case 90:
+		printf("Protection:\tbreathing apparatus%s\n", coloured?", protective gloves":". ");
+		break;
+	default:
+		printf("Protection:\tunknown\n");
+ }
 }
 
 void containment (char code){
