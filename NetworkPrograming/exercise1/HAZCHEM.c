@@ -106,3 +106,12 @@ void hazchem(char[] *code, int coloured){
 	evacuation(code[2]);
 	printf("*****************************");
 }
+
+void main(){
+	char[3] code;
+	char[3] coloured;
+	printf("\nEnter HAZCHEM code: ");
+	scanf("%s", code);
+	printf("\nIs the S reverse coloured? ");
+	scanf("%s", coloured);
+}
