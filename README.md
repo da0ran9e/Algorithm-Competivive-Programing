@@ -3,5 +3,5 @@
 # Problems
 | Problem | Difficulty | C | C++ | 
 | :---: | :---: | :---: | :---: |
-| Store & Search String | M | | [store_search_string.cpp]() | 
-| Parentheses | M | [parentheses.c]() |
+| Store & Search String | M | | [store_search_string.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/store_search_string.cpp) | 
+| Parentheses | M | | [parentheses.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/parentheses.cpp) |
