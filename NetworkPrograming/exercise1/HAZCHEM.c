@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void material (int code){
 	switch (code){
@@ -97,7 +98,13 @@ void evacuation (char code){
 	else printf("Evacuation:\tnone\n");
 }
 
-void hazchem(char[] *code, int coloured){
+int is_coloured(char *ans){
+	if(!strcmp(ans, "yes")||!strcmp(ans, "YES")||!strcmp(ans, "Yes")||!strcmp(ans, "y")||!strcmp(ans, "Y")) return 1;
+	if(!strcmp(ans, "no")||!strcmp(ans, "No")||!strcmp(ans, "NO")||!strcmp(ans, "n")||!strcmp(ans, "N")) return 0;
+	return -1;
+}
+
+void hazchem(char *code, int coloured){
 	printf("***Emergency action advice***");
 	material(code[0]-48);
 	reactivity(code[1]);
@@ -109,9 +116,25 @@ void hazchem(char[] *code, int coloured){
 
 void main(){
 	char[3] code;
-	char[3] coloured;
+	char[3] answer;
+	int coloured;
+
 	printf("\nEnter HAZCHEM code: ");
 	scanf("%s", code);
 	printf("\nIs the S reverse coloured? ");
-	scanf("%s", coloured);
+	do{
+		scanf("%s", answer);
+		coloured = is_coloured(answer);
+		if (coloured==-1) {
+			printf("Invalid answer!\n");
+			continue;
+		}
+		else {
+			hazchem(code, coloured);
+			break;
+		}
+
+	}
+	while(coloured!=-1)
+
 }
