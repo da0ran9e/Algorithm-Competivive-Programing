@@ -97,6 +97,12 @@ void evacuation (char code){
 	else printf("Evacuation:\tnone\n");
 }
 
-void hazchem(char[] *code){
-
+void hazchem(char[] *code, int coloured){
+	printf("***Emergency action advice***");
+	material(code[0]-48);
+	reactivity(code[1]);
+	protection(code[1], coloured);
+	containment(code[1]);
+	evacuation(code[2]);
+	printf("*****************************");
 }
