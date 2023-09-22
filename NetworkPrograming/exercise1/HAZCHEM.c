@@ -93,7 +93,8 @@ void containment (char code){
 }
 
 void evacuation (char code){
-
+	if (code == 101||code == 69) printf("Evacuation:\tconsider evacuation\n");
+	else printf("Evacuation:\tnone\n");
 }
 
 void hazchem(char[] *code){
