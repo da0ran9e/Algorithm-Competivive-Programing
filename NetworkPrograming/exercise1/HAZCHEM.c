@@ -20,7 +20,23 @@ void material (int code){
 }
 
 void reactivity (char code){
+	switch (code) {
+	case 112:
+	case 80:
+	case 115:
+	case 83:
+	case 119:
+	case 87:
+	case 121:
+	case 89:
+	case 122:
+	case 90:
+		printf("Reactivity:\tcan be violently reactive\n");
+		break;
+	default:
+		printf("Reactivity:\tunknown\n");	
 
+	}
 }
 
 void protection (char code){
