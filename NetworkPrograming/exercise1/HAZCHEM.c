@@ -35,7 +35,6 @@ void reactivity (char code){
 		break;
 	default:
 		printf("Reactivity:\tunknown\n");	
-
 	}
 }
 
@@ -44,7 +43,30 @@ void protection (char code){
 }
 
 void containment (char code){
-
+	switch (code) {
+	case 112:
+	case 80:
+	case 114:
+	case 82:
+	case 115:
+	case 83:
+	case 116:
+	case 84:
+		printf("Containment:\tmay be diluted and washed down the drain\n");
+		break;
+	case 119:
+	case 87:
+	case 120:
+	case 88:
+	case 121:
+	case 89:
+	case 122:
+	case 90:
+		printf("Containment:\tcontained, need to avoid spillages from entering drains or water courses\n");
+		break;
+	default:
+		printf("Containment:\tunknown\n");	
+	}
 }
 
 void evacuation (char code){
