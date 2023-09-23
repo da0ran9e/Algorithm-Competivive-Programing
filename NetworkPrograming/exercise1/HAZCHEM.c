@@ -3,10 +3,10 @@
 
 void material (int code){
 	switch (code){
-	case 1: 
+	case 1:
 		printf("Material:\tjets\n");
 		break;
-	case 2: 
+	case 2:
 		printf("Material:\tfog\n");
 		break;
 	case 3:
@@ -35,7 +35,7 @@ void reactivity (char code){
 		printf("Reactivity:\tcan be violently reactive\n");
 		break;
 	default:
-		printf("Reactivity:\tunknown\n");	
+		printf("Reactivity:\tunknown\n");
 	}
 }
 
@@ -47,7 +47,7 @@ void protection (char code, int coloured){
 	case 82:
 	case 119:
 	case 87:
-	case 120: 
+	case 120:
 	case 88:
 		printf("Protection:\tfull protective clothing must be worn\n");
 		break;
@@ -89,7 +89,7 @@ void containment (char code){
 		printf("Containment:\tcontained, need to avoid spillages from entering drains or water courses\n");
 		break;
 	default:
-		printf("Containment:\tunknown\n");	
+		printf("Containment:\tunknown\n");
 	}
 }
 
@@ -105,8 +105,8 @@ int is_coloured(char *ans){
 }
 
 void hazchem(char *code, int coloured){
-	printf("***Emergency %s action advice***\n", code);
-	material(code[0]);
+	printf("***Emergency action advice***\n");
+	material(code[0]-48);
 	reactivity(code[1]);
 	protection(code[1], coloured);
 	containment(code[1]);
@@ -121,7 +121,7 @@ int main(){
 
 	printf("\nEnter HAZCHEM code: ");
 	scanf("%s", code);
-	printf("\nIs the %s reverse coloured? ", code);
+	printf("\nIs the %c reverse coloured? ", code[1]);
 	do{
 		scanf("%s", answer);
 		coloured = is_coloured(answer);
