@@ -16,7 +16,7 @@ void material (int code){
 		printf("Material:\tdry agent\n");
 		break;
 	default:
-		printf("Material:\tunknown\n");
+		printf("Material:\tunknown %d\n",code);
 	}
 }
 
@@ -105,8 +105,8 @@ int is_coloured(char *ans){
 }
 
 void hazchem(char *code, int coloured){
-	printf("***Emergency action advice***");
-	material(code[0]-48);
+	printf("***Emergency %s action advice***\n", code);
+	material(code[0]);
 	reactivity(code[1]);
 	protection(code[1], coloured);
 	containment(code[1]);
@@ -114,14 +114,14 @@ void hazchem(char *code, int coloured){
 	printf("*****************************");
 }
 
-void main(){
-	char[3] code;
-	char[3] answer;
+int main(){
+	char code[3];
+	char answer[3];
 	int coloured;
 
 	printf("\nEnter HAZCHEM code: ");
 	scanf("%s", code);
-	printf("\nIs the S reverse coloured? ");
+	printf("\nIs the %s reverse coloured? ", code);
 	do{
 		scanf("%s", answer);
 		coloured = is_coloured(answer);
@@ -135,6 +135,6 @@ void main(){
 		}
 
 	}
-	while(coloured!=-1)
-
+	while(coloured!=-1);
+	scanf("%S");
 }
