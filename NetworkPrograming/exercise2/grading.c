@@ -41,7 +41,7 @@ void calculateGradingSummary(const char *filename) {
 
     // Read student information
     for (int i = 0; i < studentCount; i++) {
-        fscanf(file, "S|%[^|]|%[^|]|%[^|]| %[^|]| %[^|]| %c |\n",
+        fscanf(file, "S|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]| %c |\n",
                students[i].studentID,
                students[i].firstName,
                students[i].lastName,
@@ -49,10 +49,12 @@ void calculateGradingSummary(const char *filename) {
                finalString,
                &students[i].grade);
 
+                double temp = 0;
                for (int j=0; j<6; j++){
                 printf("M %c\n",progessString[j]);
                 if (progessString[j] == '.'){
-                    students[i].progressMark += (progessString[j-2]==49?10:0) + progessString[j-1] - 48 + (progessString[j+1] - 48)/10 + (progessString[j+2] - 48)/10;
+                    temp = (progessString[j-2]==49?10.0:0.0) + (0.0 + progessString[j-1] - 48) + (0.0 + (progessString[j+1] - 48))/10 + (0.0 + (progessString[j+2]>48?progessString[j+2]:48 - 48))/100;
+                    printf(" tot %lf\n",temp);
                     break;
                 }
                }
