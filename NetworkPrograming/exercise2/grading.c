@@ -5,6 +5,12 @@
 #include <dirent.h>
 
 #define MAX_STUDENTS 100
+#define MAX_SUBJECT_ID 20
+#define MAX_SUBJECT_NAME 50
+#define MAX_SEMESTER_ID 10
+#define MAX_STUDENT_ID 10
+#define MAX_FIRST_NAME 20
+#define MAX_LAST_NAME 20
 
 typedef struct {
     char studentID[10];
@@ -191,40 +197,6 @@ void displayMenu() {
     printf("5. Display score board and score report\n");
 }
 
-void addNewScoreboard() {
-    // Implement code to add a new score board
-    // You can use file I/O to store subject information, semester ID, and the number of students
-    printf("Function 1: Add a new score board\n");
-    // Add your code here
-}
-
-void addScore() {
-    // Implement code to add marks of a student for a specific subject
-    // Users should provide subject ID and semester ID before adding student information and marks
-    printf("Function 2: Add score\n");
-    // Add your code here
-}
-
-void removeScore() {
-    // Implement code to delete the grade of a student for a subject
-    // Users should provide subject ID, semester ID, and student ID
-    printf("Function 3: Remove score\n");
-    // Add your code here
-}
-
-void searchScore() {
-    // Implement code to find grade information of a student in a subject
-    // Users should provide subject ID and student ID
-    printf("Function 4: Search score\n");
-    // Add your code here
-}
-
-void displayScoreboardAndReport() {
-    // Implement code to display the score board and score report of a subject
-    // Add your code here
-    printf("Function 5: Display score board and score report\n");
-}
-
 void clearInputBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
@@ -404,6 +376,9 @@ void printTextFilesInFolder(const char *folderPath) {
             char filePath[1000];
             snprintf(filePath, sizeof(filePath), "%s/%s", folderPath, entry->d_name);
 
+            // Save summary
+            calculateGradingSummary(filePath);
+
             // Open the file
             FILE *file = fopen(filePath, "r");
             if (file == NULL) {
@@ -451,7 +426,7 @@ int main() {
                 searchScore();
                 break;
             case 5:
-                calculateGradingSummary();
+                printTextFilesInFolder("data");
                 break;
             default:
                 printf("Goodbye!\n");
