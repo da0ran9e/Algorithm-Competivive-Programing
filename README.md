@@ -16,3 +16,4 @@
 | COUNT_SUM_PAIR_EQUAL_Q | M | | [pair_equal_q.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/pair_equal_q.cpp) | 
 | DISJOINT_SEGMENT | H | | [disjoint_segment.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/disjoint_segment.cpp) |
 | Multiplication of Big numbers | M | | [multiply.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/multiply.cpp) |
+| Range Minimum Query | H | | [range_min_query.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/range_min_query.cpp) |
