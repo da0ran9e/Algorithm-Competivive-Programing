@@ -17,3 +17,5 @@
 | DISJOINT_SEGMENT | H | | [disjoint_segment.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/disjoint_segment.cpp) |
 | Multiplication of Big numbers | M | | [multiply.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/multiply.cpp) |
 | Range Minimum Query | H | | [range_min_query.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/range_min_query.cpp) |
+| Simulation Stack | M | | [stack.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/stack.cpp) |
+| Simulation Stack | M | | [stack.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/stack.cpp) |
