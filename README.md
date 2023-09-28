@@ -20,3 +20,4 @@
 | Simulation Stack | M | | [stack.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/stack.cpp) |
 | Simulation Queue | M | | [queue.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/queue.cpp) |
 | Maze | M | | [maze.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/maze.cpp) |
+| Binary sequences generation without "11" | M | | [special_binary.cpp](https://github.com/da0ran9e/Algorithm-Competivive-Programing/blob/main/OpenERP/special_binary.cpp) |
