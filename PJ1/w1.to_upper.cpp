@@ -12,7 +12,7 @@ char upper_case_of(char c){
 
 int main(){
 	char c;
-	while(cin >> c){
+	while(cin.get(c)){
 		cout << upper_case_of(c);
 	}
 }
