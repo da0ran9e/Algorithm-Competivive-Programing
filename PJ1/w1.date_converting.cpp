@@ -2,7 +2,7 @@
 using namespace std;
 
 bool check_date(string date){
-	if (date.length()!=10 || date[4]!=':' || date[7]!=':') return false; //syntax checker
+	if (date.length()!=10 || date[4]!='-' || date[7]!='-') return false; //syntax checker
 
 	int year = (date[0]-'0')*1000 + (date[1]-'0')*100 + (date[2]-'0')*10 + (date[3]-'0');
 	int month = (date[5]-'0')*10 + (date[6]-'0');
