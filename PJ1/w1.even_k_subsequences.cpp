@@ -5,15 +5,15 @@ using namespace std;
 
 int subarrays(int n, int k, int *x){
 	int count = 0;
-	int f[MAX_N] = {0};
+	int sum[MAX_N] = {0};
 
 	for (int i=1; i<n; i++){
-		f[i] = f[i-1] + x[i];
+		sum[i] = sum[i-1] + x[i]; // 
 	}
 
 	for (int i=k-1; i<n; i++){
-		int sum = f[i] - (i>=k ? f[i-k]:0);
-		if(sum%2 == 0){
+		int seq_sum = sum[i] - (i>=k ? sum[i-k]:0);
+		if(seq_sum%2 == 0){
 			count ++;
 		}
 	}
