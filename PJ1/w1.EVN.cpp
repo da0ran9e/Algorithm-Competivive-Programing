@@ -36,5 +36,5 @@ float new_bill(int amount){
 int main(){
 	int amount;
 	cin >> amount;
-	cout << -vat(old_bill(amount))+vat(new_bill(amount));
+	printf("%.2f", -vat(old_bill(amount))+vat(new_bill(amount))) ;
 }
