@@ -8,7 +8,7 @@ void degree_2(int a, int b, int c){
         printf("%.2f", (float)(-b/(2*a)));
     }
     else{
-        printf("%.2f %.2f", (float)(-b+sqrt(delta))/(2*a), (float)(-b-sqrt(delta))/(2*a));
+        printf("%.2f %.2f", (float)(-b-sqrt(delta))/(2*a), (float)(-b+sqrt(delta))/(2*a));
     }
 }
 
