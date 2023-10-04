@@ -3,8 +3,8 @@ using namespace std;
 
 #define NMAX 9999
 
-int Imax=0;
-int Imin=0;
+int Imax=INT_MIN;
+int Imin=INT_MAX;
 int sum=0;
 int arr[NMAX];
 
