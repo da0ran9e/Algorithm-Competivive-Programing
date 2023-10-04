@@ -21,8 +21,8 @@ void check_min(int x){
 }
 
 int max_segment(int x, int y){
-	int max_seg=0;
-	for (int i=x; i<=y; i++){
+	int max_seg=INT_MIN;
+	for (int i=x-1; i<y; i++){
 		if(arr[i]>max_seg) max_seg = arr[i];
 	}
 	return max_seg;
