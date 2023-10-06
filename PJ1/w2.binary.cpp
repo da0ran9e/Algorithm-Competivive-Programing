@@ -10,7 +10,7 @@ void Try(int k, int n){
             x[k] = i;
             if(k == n) {
                 for(int j = 1; j <= n; j++)
-                    cout << x[j] << " ";
+                    cout << x[j];
                 cout << endl;
             }
             else Try(k+1, n);
