@@ -7,11 +7,11 @@ int subarrays(int n, int k, int *x){
 	int count = 0;
 	int sum[MAX_N] = {0};
 
-	for (int i=1; i<n; i++){
+	for (int i=0; i<n; i++){
 		sum[i] = sum[i-1] + x[i]; // 
 	}
 
-	for (int i=k-2; i<n; i++){
+	for (int i=k-1; i<n; i++){
 		int seq_sum = sum[i] - (i>=k ? sum[i-k]:0);
 		if(seq_sum%2 == 0){
 			count ++;
