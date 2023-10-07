@@ -28,3 +28,18 @@ int main(){
 	}
 	cout << subarrays(n,k,x);
 }
+
+// Example:
+//6 3
+//2 4 5 1 1 2
+//
+// Initialize sum array:
+//      [sum]    0  0  0  0  0  0 ...
+// Input array:
+//       [x]     2  4  5  1  1  2
+//      sum[i-1]   ~v~~^~  x[i]
+//            sum[i]  ~v~
+//      [sum]    2  6  11 12 13 15 ...
+// int seq_sum = sum[i] - (i>=k ? sum[i-k]:0)
+//     seq_sum   -  -  11 10 7  4
+//     count++         ~~~^~~~~~^~ 2
