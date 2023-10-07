@@ -11,7 +11,7 @@ int subarrays(int n, int k, int *x){
 		sum[i] = sum[i-1] + x[i]; // 
 	}
 
-	for (int i=k-1; i<n; i++){
+	for (int i=k-2; i<n; i++){
 		int seq_sum = sum[i] - (i>=k ? sum[i-k]:0);
 		if(seq_sum%2 == 0){
 			count ++;
