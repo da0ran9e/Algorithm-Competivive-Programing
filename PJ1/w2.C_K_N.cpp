@@ -39,3 +39,33 @@ int main(){
     cin >> a >> b;
     cout << C(a, b);
 }
+ /*
+ Example: 
+    3 5
+
+    k =    n!
+    n   k!(n-k)!
+
+    C(3, 5) => C(2, 5)
+
+    Initialize numerator and denominator:
+                [a]     4  5  6  7  8
+                [b]     1  2  3  4  5
+
+    Calculate the greatest common divisor (GCD) between [a] and [b]
+        i=0; j=0: break;
+        i=0, i=1:
+            [a]     4  5  6  7  8
+                   ~^~
+            [b]     1  2  3  4  5
+                      ~^~
+            gcd = 2
+            [a]     2  5  6  7  8
+                   ~^~
+            [b]     1  1  3  4  5
+                      ~^~
+        i=1, j=0: break;
+        i=1, j=1: break;
+    
+    result = 2*5 = 10;
+ */
