@@ -49,20 +49,20 @@ int main(){
     C(3, 5) => C(2, 5)
 
     Initialize numerator and denominator:
-                [a]     4  5  6  7  8
-                [b]     1  2  3  4  5
+                [a]     4  5  
+                [b]     1  2  
 
     Calculate the greatest common divisor (GCD) between [a] and [b]
         i=0; j=0: break;
         i=0, i=1:
-            [a]     4  5  6  7  8
+            [a]     4  5  
                    ~^~
-            [b]     1  2  3  4  5
+            [b]     1  2  
                       ~^~
             gcd = 2
-            [a]     2  5  6  7  8
+            [a]     2  5  
                    ~^~
-            [b]     1  1  3  4  5
+            [b]     1  1 
                       ~^~
         i=1, j=0: break;
         i=1, j=1: break;
