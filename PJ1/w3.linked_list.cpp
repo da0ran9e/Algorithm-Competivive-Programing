@@ -18,26 +18,40 @@ int main(){
         if (command == "addlast"){
             int v;
             cin>>v; 
-            linked_list.push_back(v);
+            auto itv = find(linked_list.begin(), linked_list.end(), v);
+            if(itv==linked_list.end())
+            {
+                linked_list.push_back(v);
+            }
+            
         }
         else if (command == "addfirst"){
             int v;
             cin>>v; 
-            linked_list.insert(linked_list.begin(), v);
+            auto itv = find(linked_list.begin(), linked_list.end(), v);
+            if(itv==linked_list.end())
+            {
+                linked_list.insert(linked_list.begin(), v);
+            }
         }
         else if (command == "addafter"){
             int v, p;
             cin>>v>>p; 
-            
-            auto it = find(linked_list.begin(), linked_list.end(), p);
-            linked_list.insert(it + 1, v);
+            auto itv = find(linked_list.begin(), linked_list.end(), v);
+            auto itp = find(linked_list.begin(), linked_list.end(), p);
+            if(itv==linked_list.end() && itp!=linked_list.end()){
+                linked_list.insert(itp+1, v);
+            }
         }
         else if (command == "addbefore"){
             int v, p;
             cin>>v>>p; 
             
-            auto it = find(linked_list.begin(), linked_list.end(), p);
-            linked_list.insert(it, v);
+            auto itv = find(linked_list.begin(), linked_list.end(), v);
+            auto itp = find(linked_list.begin(), linked_list.end(), p);
+            if(itv==linked_list.end() && itp!=linked_list.end()){
+                linked_list.insert(itp, v);
+            }        
         }
         else if (command == "remove"){
             int v;
