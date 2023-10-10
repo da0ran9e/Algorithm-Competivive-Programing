@@ -6,6 +6,7 @@ using namespace std;
 int a,b,c,visited[NMAX][NMAX];
 
 void bfs(int x,int y,int step){
+    cout << x << " " << y << endl;
     if(x==c||y==c){
         cout<<step<<endl;
         exit(0);
@@ -15,17 +16,27 @@ void bfs(int x,int y,int step){
 
     if(y==0) // jug b is empty
         visited[x][0]=1,bfs(x,b,step+1);
-
+    // pour water from jug a to b
     int t=min(x,b-y);
     if(visited[x-t][y+t]==0){
         visited[x-t][y+t]=1;
         bfs(x-t,y+t,step+1);
     }
-
+    // pour from b to a
     t=min(y,a-x);
     if(visited[x+t][y-t]==0){
         visited[x+t][y-t]=1;
         bfs(x+t,y-t,step+1);
+    }
+    // empty jug a
+    if(visited[0][y]==0){
+        visited[0][y]=1;
+        bfs(0,y,step+1);
+    }
+    //empty jug b
+    if(visited[x][0]==0){
+        visited[x][0]=1;
+        bfs(x,0,step+1);
     }
 }
 
