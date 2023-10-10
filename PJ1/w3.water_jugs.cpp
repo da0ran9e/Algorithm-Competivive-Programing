@@ -6,7 +6,7 @@ using namespace std;
 int a,b,c,visited[NMAX][NMAX];
 
 void bfs(int x,int y,int step){
-    cout << x << " " << y << endl;
+    cout << x << " " << y << " " << step << endl;
     if(x==c||y==c){
         cout<<step<<endl;
         exit(0);
@@ -29,12 +29,12 @@ void bfs(int x,int y,int step){
         bfs(x+t,y-t,step+1);
     }
     // empty jug a
-    if(visited[0][y]==0){
+    if(visited[0][y]==0 && y!=b){
         visited[0][y]=1;
         bfs(0,y,step+1);
     }
     //empty jug b
-    if(visited[x][0]==0){
+    if(visited[x][0]==0 && x!=a){
         visited[x][0]=1;
         bfs(x,0,step+1);
     }
