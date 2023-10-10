@@ -3,25 +3,28 @@ using namespace std;
 
 #define NMAX 1005
 
-int a,b,c,vis[NMAX][NMAX];
+int a,b,c,visited[NMAX][NMAX];
 
 void bfs(int x,int y,int step){
     if(x==c||y==c){
         cout<<step<<endl;
         exit(0);
     }
-    if(x==0)
-        vis[0][y]=1,bfs(a,y,step+1);
-    if(y==0)
-        vis[x][0]=1,bfs(x,b,step+1);
+    if(x==0) // jug a is empty
+        visited[0][y]=1,bfs(a,y,step+1);
+
+    if(y==0) // jug b is empty
+        visited[x][0]=1,bfs(x,b,step+1);
+
     int t=min(x,b-y);
-    if(vis[x-t][y+t]==0){
-        vis[x-t][y+t]=1;
+    if(visited[x-t][y+t]==0){
+        visited[x-t][y+t]=1;
         bfs(x-t,y+t,step+1);
     }
+
     t=min(y,a-x);
-    if(vis[x+t][y-t]==0){
-        vis[x+t][y-t]=1;
+    if(visited[x+t][y-t]==0){
+        visited[x+t][y-t]=1;
         bfs(x+t,y-t,step+1);
     }
 }
@@ -33,7 +36,45 @@ int main(){
         cout<<-1<<endl;
         return 0;
     }
-    memset(vis,0,sizeof(vis));
+    memset(visited,0,sizeof(visited));
     bfs(0,0,0);
     cout<<-1<<endl;
 }
+/*
+    Example: 6 8 4
+
+    |BFS from bfs(0,0,0)                                0,0
+    |    
+    |--| bfs(6,0,1) a empty                             6,0
+    |  |     
+    |  |--| bfs(6,8,2) b empty                          6,8
+    |  |  | 
+    |  |  |--| t = min(6, 8-8) = 0
+    |  |  |
+    |  |  |--| t = min(8, 6-6) = 0
+    |  |  
+    |  |--| t = min(6, 8-0) = 6
+    |  |  | bfs(0,6,2)                                  0,6
+    |  |  |
+    |  |  |--| bfs(6,6,3) a empty                       6,6
+    |  |  |   
+    |  |  |--| t = min(6, 8-6) = 2
+    |  |  |  | bfs(4,8,4)                               4,8 (cout)
+    |  |  |  
+    |  |  |--| t = min(6, 6-6) = 0
+    |  |                         
+    |  |--| t = min(0, 6-6) = 0
+    |
+    |--| bfs(0,8,1) b empty                             0,8
+    |  |
+    |  |--| bfs(6,8,2) a empty (visited)
+    |  |  
+    |  |--| t = min(0, 8-8) = 0
+    |  |
+    |  |--| t = min(8, 6-0) = 6
+    |
+    |--| t = min(0,8-0) = 0
+    |
+    |--| t = min(0,6-0) = 0
+
+*/
