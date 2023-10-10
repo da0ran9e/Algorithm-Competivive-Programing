@@ -1,7 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int a,b,c,vis[1005][1005];
+#define NMAX 1005
+
+int a,b,c,vis[NMAX][NMAX];
+
 void bfs(int x,int y,int step){
     if(x==c||y==c){
         cout<<step<<endl;
@@ -22,14 +25,15 @@ void bfs(int x,int y,int step){
         bfs(x+t,y-t,step+1);
     }
 }
+
 int main(){
-    cin>>a>>b>>c;
-    if(c>a&&c>b){
+    cin >> a >> b >> c;
+
+    if(c>a && c>b){
         cout<<-1<<endl;
         return 0;
     }
     memset(vis,0,sizeof(vis));
     bfs(0,0,0);
     cout<<-1<<endl;
-    return 0;
 }
