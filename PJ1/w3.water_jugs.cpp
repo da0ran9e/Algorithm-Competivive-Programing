@@ -6,7 +6,6 @@ using namespace std;
 int a,b,c,visited[NMAX][NMAX];
 
 void bfs(int x,int y,int step){
-    cout << x << " " << y << " " << step << endl;
     if(x==c||y==c){
         cout<<step<<endl;
         exit(0);
