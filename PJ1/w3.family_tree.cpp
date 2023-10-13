@@ -3,21 +3,21 @@ using namespace std;
 
 class TreeNode {
 public:
-    int val;
+    string val;
     TreeNode* leftMostChild;
     TreeNode* rightSibling;
 
-    TreeNode(int v) : val(v), leftMostChild(nullptr), rightSibling(nullptr) {}
+    TreeNode(const string& v) : val(v), leftMostChild(nullptr), rightSibling(nullptr) {}
 };
 
 TreeNode* root;
 
-TreeNode* makeNode(int v) {
+TreeNode* makeNode(const string& v) {
     TreeNode* p = new TreeNode(v);
     return p;
 }
 
-TreeNode* find(TreeNode* r, int a) {
+TreeNode* find(TreeNode* r, const string& a) {
     if (r == nullptr) return nullptr;
     if (r->val == a) return r;  // reached the root
     TreeNode* p = r->leftMostChild;
@@ -28,8 +28,22 @@ TreeNode* find(TreeNode* r, int a) {
     }
     return nullptr;
 }
+int depthTreeNode(TreeNode* r, string v, int d) {
+        if (r == nullptr) return -1;
+        if (r->val == v) return d;
+        for (TreeNode* p = r->leftMostChild; p != nullptr; p = p->rightSibling) {
+            if (p->val == v) return d + 1;
+            int d1 = depthTreeNode(p, v, d + 1);
+            if (d1 != -1) return d1;
+        }
+        return -1;
+    }
+int depth(string v) {
+        int res = depthTreeNode(root, v, 1);
+        return res;
+    }
 
-void insert(int u, int v) {
+void insert(const string& u, const string& v) {
     TreeNode* p = find(root, u);
     if (p != nullptr) return;
     TreeNode* q = find(root, v);
@@ -44,60 +58,37 @@ void insert(int u, int v) {
     last->rightSibling = p;
 }
 
-void preOrder(TreeNode* p) {
-    if (p == nullptr) return;
-    cout << p->val << ' ';
-    for (TreeNode* tmp = p->leftMostChild; tmp != nullptr; tmp = tmp->rightSibling)
-        preOrder(tmp);
-}
-
-void inOrder(TreeNode* r) {
-    if (r == nullptr) return;
-    TreeNode* p = r->leftMostChild;
-    inOrder(p);  
-    cout << r->val << ' '; 
-    if (p == nullptr) return;
-    p = p->rightSibling;
-    while (p != nullptr) {
-        inOrder(p);
-        p = p->rightSibling;
-    }
-}
-
-void postOrder(TreeNode* r) {
-    if (r == nullptr) return;
-    for (TreeNode* tmp = r->leftMostChild; tmp != nullptr; tmp = tmp->rightSibling)
-        postOrder(tmp);
-    cout << r->val << ' ';
-}
 
 int main() {
-    string line;
+    list<auto> trees;
+
+    string child;
+    string parent;
+    string query;
+    string name;
+
     root = nullptr;
     while (true) {
-        cin >> line;
-        if (line == "*") break;
-        else if (line == "MakeRoot") {
-            int u;
-            cin >> u;
-            root = makeNode(u);
-        }
-        else if (line == "Insert") {
-            int u, v;
-            cin >> u >> v;
-            insert(u, v);
-        }
-        else if (line == "PreOrder") {
-            preOrder(root);
-            cout << endl;
-        }
-        else if (line == "InOrder") {
-            inOrder(root);
-            cout << endl;
-        }
-        else if (line == "PostOrder") {
-            postOrder(root);
-            cout << endl;
-        }
+        cin >> child;
+        if (line == "***") break;  
+    }
+    while (true) {
+        cin >> query >> name;
+        if (line == "***") break;  
     }
 }
+/*
+              Newman 
+                | 
+        ------------------------------------
+        |             |                     |
+     Peter          Mark                   David
+                    |                        |
+            -----------------             ------------
+            |       |       |             |          |
+          Paul    Stephan  Thomas       John        Bill
+                            |
+                        -----------
+                        |         |
+                    Michael      Pierre  
+*/
