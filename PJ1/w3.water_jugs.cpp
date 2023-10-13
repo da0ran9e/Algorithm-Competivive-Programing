@@ -6,27 +6,59 @@ using namespace std;
 int a,b,c,visited[NMAX][NMAX];
 
 void bfs(int x,int y,int step){
+    if (x>a || y>b || x<0 || y<0) return;
+
     if(x==c||y==c){
         cout<<step<<endl;
         exit(0);
     }
-    if(x==0) // jug a is empty
-        visited[0][y]=1,bfs(a,y,step+1);
+    if(x==0 && visited[a][y] == 0) {// jug a is empty
+        visited[0][y]=1;
+        bfs(a,y,step+1);
+    }
 
-    if(y==0) // jug b is empty
-        visited[x][0]=1,bfs(x,b,step+1);
+    if(y==0 && visited[x][b] == 0) { // jug b is empty
+        visited[x][0]=1;
+        bfs(x,b,step+1);
+    }
     // pour water from jug a to b
-    int t=min(x,b-y);
-    if(visited[x-t][y+t]==0){
-        visited[x-t][y+t]=1;
-        bfs(x-t,y+t,step+1);
+    int t=b-y;
+    if (t<=x){
+        if(visited[x-t][b]==0){
+            visited[x-t][b]=1;
+            bfs(x-t,b,step+1);
+        }
     }
+    else{
+        if(visited[0][x+y]==0){
+            visited[0][x+y]=1;
+            bfs(0,x+y,step+1);
+        }
+    }
+
+    t=a-x;
+    if (t<=y){
+        if(visited[a][y-t]==0){
+            visited[a][y-t]=1;
+            bfs(a,y-t,step+1);
+        }
+    }
+    else{
+        if(visited[x+y][0]==0){
+            visited[x+y][0]=1;
+            bfs(x+y,0,step+1);
+        }
+    }
+    // if(visited[x-t][y+t]==0){
+    //     visited[x-t][y+t]=1;
+    //     bfs(x-t,y+t,step+1);
+    // }
     // pour from b to a
-    t=min(y,a-x);
-    if(visited[x+t][y-t]==0){
-        visited[x+t][y-t]=1;
-        bfs(x+t,y-t,step+1);
-    }
+    // t=min(y,a-x);
+    // if(visited[x+t][y-t]==0){
+    //     visited[x+t][y-t]=1;
+    //     bfs(x+t,y-t,step+1);
+    // }
     // empty jug a
     if(visited[0][y]==0 && y!=b){
         visited[0][y]=1;
