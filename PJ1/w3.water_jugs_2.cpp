@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef pair<int, int> pii;
-int printpath(map<pii, pii> mp, pii u)
+int printSolution(map<pii, pii> mp, pii u)
 {
 	if (u.first == 0 && u.second == 0) {
 		cout << 0 << " " << 0 << endl;
 		return 0;
 	}
-	int step = printpath(mp, mp[u]) + 1;
-	cout << u.first << " " << u.second << ":" << step << endl;
+	int step = printSolution(mp, mp[u]) + 1;
+	cout << u.first << "::" << u.second << ":" << step << endl;
 	return step;
 }
 
@@ -36,7 +36,7 @@ void BFS(int a, int b, int target)
 		if (u.first == target || u.second == target) {
 			isSolvable = true;
  
-			int step = printpath(mp, u);
+			int step = printSolution(mp, u);
 			cout << "Step: " << step << endl;
 			return;
 		}
@@ -52,7 +52,7 @@ void BFS(int a, int b, int target)
 			mp[{ a, u.second }] = u;
 		}
  
-		// transfer jug 1 -> jug 2z
+		// transfer jug 1 -> jug 2
 		int d = b - u.second;
 		if (u.first >= d) {
 			int c = u.first - d;
