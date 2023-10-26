@@ -1,72 +1,68 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1010;
-bool g[N][N];
-int t, n, m;
-vector<int> path;
+bool isSafe(int v, vector<vector<int>>& graph, vector<int>& path, int pos) {
+    if (graph[path[pos - 1]][v] == 0)
+        return false;
 
-bool isValid(int v, int u) {
-	if (g[v][u] == false) return false;
-		for (int i = 0; i < path.size() - 1; i++)
-	if (path[i] == v && path[i + 1] == u)
-		return false;
-		return true;
+    for (int i = 0; i < pos; i++)
+        if (path[i] == v)
+            return false;
+
+    return true;
 }
 
-bool hamCycleUtil(int node) {
-	if (node == n) {
-	if (g[path[n - 1]][path[0]])
-		return true;
-	else
-		return false;
-	}
+bool hamiltonianCycleUtil(vector<vector<int>>& graph, vector<int>& path, int pos, int n) {
+    if (pos == n) {
+        if (graph[path[pos - 1]][path[0]] == 1)
+            return true;
+        return false;
+    }
 
-	for (int v = 0; v < n; v++) {
-		if (isValid(node, v)) {
-			path.push_back(v);
-			if (hamCycleUtil(node + 1))
-				return true;
-			path.pop_back();
-		}
-	}
-	return false;
+    for (int v = 1; v < n; v++) {
+        if (isSafe(v, graph, path, pos)) {
+            path[pos] = v;
+            if (hamiltonianCycleUtil(graph, path, pos + 1, n))
+                return true;
+            path[pos] = -1;
+        }
+    }
+
+    return false;
 }
 
-bool isHamiltonianCycle() {
-	if (hamCycleUtil(0) == false) {
-		return false;
-	}
-	return true;
+bool isHamiltonianGraph(vector<vector<int>>& graph) {
+    int n = graph.size();
+    vector<int> path(n, -1);
+    path[0] = 0;
+
+    if (hamiltonianCycleUtil(graph, path, 1, n))
+        return true;
+
+    return false;
 }
 
 int main() {
-	// cout << "Enter the number of graphs: ";
-	cin >> t;
-	while (t--) {
-		// cout << "Enter the number of nodes in the graph: ";
-		cin >> n;
-		// cout << "Enter the number of edges in the graph: ";
-		cin >> m;
-		// cout << "Enter the adjacency matrix representation of the graph: " << endl;
-		for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++)
-			g[i][j] = false;
-		for (int i = 0; i < m; i++) {
-			int x, y;
-			cin >> x >> y;
-			g[x][y] = g[y][x] = true;
-		}
-		path.clear();
-		path.push_back(0);
-		if (isHamiltonianCycle() == false)
-			cout << "0" << endl;
-		else
-			cout << "1" << endl;
-	}
-	return 0;
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n, m;
+        cin >> n >> m;
+        vector<vector<int>> graph(n, vector<int>(n, 0));
+
+        for (int i = 0; i < m; i++) {
+            int u, v;
+            cin >> u >> v;
+            graph[u - 1][v - 1] = 1;
+            graph[v - 1][u - 1] = 1;
+        }
+
+        if (isHamiltonianGraph(graph))
+            cout << "1" << endl;
+        else
+            cout << "0" << endl;
+    }
+
+    return 0;
 }
-
-
-
-
