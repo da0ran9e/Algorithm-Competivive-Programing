@@ -1,24 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define NMAX 10000
+int main() {
+    int n;
+    std::cin >> n;
 
-int main(){
-	int n;
-	vector<int> arr(n);
-	cin >> n;
-	for (int i=0; i<n; i++){
-		cin >> arr[i];
-	}
+    std::vector<int> A(n);
+    std::unordered_set<int> seen;
 
-	for (int i=0; i<n; i++){
-	int a = 0;	
-		for (int j=0; j<i; j++){
-			if (find(arr(i), arr.end(), arr[i]) != arr.end()) {
-				a=1;
-				break;
-			}
-		}
-		cout << a << endl;
-	}
+    for (int i = 0; i < n; ++i) {
+        std::cin >> A[i];
+        if (seen.count(A[i]) > 0) {
+            std::cout << "1" << std::endl;
+        } else {
+            seen.insert(A[i]);
+            std::cout << "0" << std::endl;
+        }
+    }
+
+    return 0;
 }
