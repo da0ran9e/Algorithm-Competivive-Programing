@@ -14,16 +14,16 @@ int main() {
     
     vector<vector<Edge>> graph(n);
     
-    for (int i = 0; i < m; ++i) {
+    for (int i=0; i<m; ++i) {
         int u, v, w;
         cin >> u >> v >> w;
-        graph[u - 1].push_back({v - 1, w}); // Adjust for 0-based indexing
+        graph[u - 1].push_back({v - 1, w});
     }
     
     int s, t;
     cin >> s >> t;
-    s--; // Adjust for 0-based indexing
-    t--; // Adjust for 0-based indexing
+    s--;
+    t--;
     
     vector<int> dist(n, INF);
     dist[s] = 0;
