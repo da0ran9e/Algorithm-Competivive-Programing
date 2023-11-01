@@ -1,7 +1,5 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
+#include <bits/stdc++.h>
+using namespace std;
 
 const int INF = 1e9;
 
@@ -9,14 +7,14 @@ struct Edge {
     int to, capacity, flow;
 };
 
-std::vector<std::vector<Edge>> graph;
-std::vector<int> parent;
+vector<vector<Edge>> graph;
+vector<int> parent;
 
 int maxFlow(int source, int sink) {
     int flow = 0;
     while (true) {
-        std::fill(parent.begin(), parent.end(), -1);
-        std::queue<std::pair<int, int>> q;
+        fill(parent.begin(), parent.end(), -1);
+        queue<pair<int, int>> q;
         q.push({source, INF});
 
         while (!q.empty()) {
@@ -27,7 +25,7 @@ int maxFlow(int source, int sink) {
             for (Edge& edge : graph[cur]) {
                 int next = edge.to;
                 if (parent[next] == -1 && edge.capacity - edge.flow > 0) {
-                    int new_capacity = std::min(capacity, edge.capacity - edge.flow);
+                    int new_capacity = min(capacity, edge.capacity - edge.flow);
                     parent[next] = cur;
                     if (next == sink) {
                         flow += new_capacity;
@@ -61,22 +59,22 @@ int maxFlow(int source, int sink) {
 
 int main() {
     int N, M;
-    std::cin >> N >> M;
+    cin >> N >> M;
     int source, sink;
-    std::cin >> source >> sink;
+    cin >> source >> sink;
 
     graph.resize(N);
     parent.resize(N);
 
     for (int i = 0; i < M; i++) {
         int u, v, c;
-        std::cin >> u >> v >> c;
+        cin >> u >> v >> c;
         graph[u - 1].push_back({v - 1, c, 0});
         graph[v - 1].push_back({u - 1, 0, 0});
     }
 
     int max_flow = maxFlow(source - 1, sink - 1);
-    std::cout << max_flow << std::endl;
+    cout << max_flow << endl;
 
     return 0;
 }
